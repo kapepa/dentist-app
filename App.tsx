@@ -1,27 +1,103 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import StylesCSS from './styles.jsx';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { GroopDto } from './dto/group.dto.tsx';
+import GroupPage from './page/group/index';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.group}>
-        <Text style={styles.groupTitle}>11 сентября</Text>
-        <View style={styles.groupInner}>
+  const [state, setState] = useState(
+  [
+    {
+      date: '11 сентября',
+      data: [
+      {
+        diagnostics: 'пульпит, удаление зуба',
+        time: '12:30',
+        user: {
+          avatar: 'https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg',
+          name: 'Анжела Mатиева',
+        },
+      },{
+        diagnostics: 'пульпит',
+        time: '14:30',
+        user: {
+          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
+          name: 'Василий Пупкин',
+        },
+      },{
+        diagnostics: 'пульпит',
+        time: '14:30',
+        user: {
+          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
+          name: 'Василий Пупкин',
+        },
+      },{
+        diagnostics: 'пульпит',
+        time: '14:30',
+        user: {
+          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
+          name: 'Василий Пупкин',
+        },
+      },{
+        diagnostics: 'пульпит',
+        time: '14:30',
+        user: {
+          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
+          name: 'Василий Пупкин',
+        },
+      },{
+        diagnostics: 'пульпит',
+        time: '14:30',
+        user: {
+          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
+          name: 'Василий Пупкин',
+        },
+      },{
+        diagnostics: 'пульпит',
+        time: '14:30',
+        user: {
+          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
+          name: 'Василий Пупкин',
+        },
+      },{
+        diagnostics: 'пульпит',
+        time: '14:30',
+        user: {
+          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
+          name: 'Василий Пупкин',
+        },
+      },{
+        diagnostics: 'пульпит',
+        time: '14:30',
+        user: {
+          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
+          name: 'Василий Пупкин',
+        },
+      },
+      ]
+    },
+    {
+      date: '13 сентября',
+      data: [
+      {
+        diagnostics: 'пульпит, удаление зуба',
+        time: '12:30',
+        user: {
+          avatar: 'https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg',
+          name: 'Анжела Mатиева',
+        },
+      },{
+        diagnostics: 'пульпит',
+        time: '14:30',
+        user: {
+          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
+          name: 'Василий Пупкин',
+        },
+      }
+      ]
+    },
+  ] as GroopDto[]);
 
-          <View style={styles.groupItem}>
-            <Image source={{ uri: "https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg"}} style={styles.avatar}/>
-            <View style={styles.textUser}>
-              <Text style={styles.fullName}>Анжела Mатиева</Text>
-              <Text style={styles.grayText}>пульпит, удаление зуба</Text>
-            </View>
-            <Text style={[styles.groupDate, false ? styles.groupDateActive : ""]}>12:30</Text>
-          </View>
-
-        </View>
-      </View>
-    </View>
-  );
+  return <GroupPage data={state}/>;
 }
 
-const styles = StyleSheet.create(StylesCSS);

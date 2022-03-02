@@ -1,27 +1,11 @@
 const StylesCSS = {
-  container: {
-    flex: 1,
-    marginTop: 70,
-  },
-  group: {
-    flex: 1,
-        paddingLeft: 20,
-        paddingRight: 20,
-  },
-  groupTitle: {
-    fontSize: 22,
-    color: "#000",
-  },
-  groupInner: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-  },
   groupItem: {
     alignItems: "center",
     flexDirection: "row",
     paddingTop: 20,
     paddingBottom: 20,
+    borderBottomWidth: 2,
+    borderBottomColor: "#F3F3F3",
   },
   avatar: {
     borderRadius: 50,
@@ -54,7 +38,8 @@ const StylesCSS = {
   },
   groupDateActive: {
     backgroundColor: "#2A86FF",
+    color: "#FFF",
   }
-}
+};
 
 export default StylesCSS;
