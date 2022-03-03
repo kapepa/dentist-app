@@ -31,7 +31,7 @@ export default function GroupPage<IGroupPage> ( { data } ) {
            <Text style={styles.groupTitle}>{date}</Text>
         )}
       />
-      <TouchableOpacity style={styles.plusBtn}>
+      <TouchableOpacity style={styles.plusBtn} onPress={() => {console.log("asdasda")}}>
         <AntDesign name="pluscircle" size={63} color="#2a86ff" />
       </TouchableOpacity>
     </View>
