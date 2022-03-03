@@ -9,29 +9,30 @@ import { Ionicons } from '@expo/vector-icons';
 
 interface IGroupPage {
   data: GroopDto,
+  navigation: any,
 }
 interface IState {
   activeProfile: GroopItemDto,
 }
 
-export default function GroupPage<IGroupPage> ( { data } ) {
+export default function GroupPage<IGroupPage> ( { data, navigation } ) {
   const activeDate = useRef<string>(null)  ;
   const [state, setState] = useState<IState>({
     activeProfile: {} as GroopDto,
   });
 
   return (
-    <View style={styles.container}>
+    <View>
       <SectionList
         style={styles.group}
         sections={data}
         keyExtractor={(item, index) => item.time + index}
-        renderItem={({ item }) => { return <View style={styles.groupInner}><GroupItems {...item} /></View> }}
+        renderItem={({ item }) => { return <View style={styles.groupInner}><GroupItems { ...{...item, navigation} } /></View> }}
         renderSectionHeader={({ section: { date } }) => (
            <Text style={styles.groupTitle}>{date}</Text>
         )}
       />
-      <TouchableOpacity style={styles.plusBtn} onPress={() => {console.log("asdasda")}}>
+      <TouchableOpacity style={styles.plusBtn} onPress={() => {console.log("btn +")}}>
         <AntDesign name="pluscircle" size={63} color="#2a86ff" />
       </TouchableOpacity>
     </View>

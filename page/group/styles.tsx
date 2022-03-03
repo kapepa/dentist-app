@@ -1,7 +1,6 @@
 const StylesCSS = {
   container: {
     flex: 1,
-    marginTop: 45,
   },
   group: {
     paddingLeft: 20,

@@ -1,8 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { GroopDto } from './dto/group.dto.tsx';
 import GroupPage from './page/group/index';
+import Patient from './page/patient/index';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [state, setState] = useState(
@@ -98,6 +103,39 @@ export default function App() {
     },
   ] as GroopDto[]);
 
-  return <GroupPage data={state}/>;
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={({navigation}) => <GroupPage data={state} navigation={navigation}/>}
+          options={{
+            title: 'Home',
+            headerStyle: {
+              backgroundColor: '#2A86FF',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Patient"
+          component={() => <Patient />}
+          options={{
+            title: 'Patient',
+            headerStyle: {
+              backgroundColor: '#2A86FF',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
