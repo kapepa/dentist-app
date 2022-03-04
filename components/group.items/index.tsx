@@ -9,7 +9,7 @@ interface IGroupItems extends GroopItemDto {
 export default function GroupItems<any>({diagnostics,time,user,active,navigation} ) {
 
   const onPressButton = () => {
-    navigation.navigate('Patient');
+    navigation.navigate('Patient',{user});
   };
 
   return (

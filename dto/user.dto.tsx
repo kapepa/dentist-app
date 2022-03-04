@@ -1,4 +1,5 @@
-export default class UserDto {
+export class UserDto {
   name: string,
   avatar: string,
+  phone: string,
 }

@@ -21,6 +21,7 @@ export default function App() {
         user: {
           avatar: 'https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg',
           name: 'Анжела Mатиева',
+          phone: '+3 (063) 569-29-28',
         },
       },{
         diagnostics: 'пульпит',
@@ -28,6 +29,7 @@ export default function App() {
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
+          phone: '+3 (063) 569-29-28',
         },
       },{
         diagnostics: 'пульпит',
@@ -35,6 +37,7 @@ export default function App() {
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
+          phone: '+3 (063) 569-29-28',
         },
       },{
         diagnostics: 'пульпит',
@@ -42,6 +45,7 @@ export default function App() {
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
+          phone: '+3 (063) 569-29-28',
         },
       },{
         diagnostics: 'пульпит',
@@ -49,6 +53,7 @@ export default function App() {
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
+          phone: '+3 (063) 569-29-28',
         },
       },{
         diagnostics: 'пульпит',
@@ -56,6 +61,7 @@ export default function App() {
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
+          phone: '+3 (063) 569-29-28',
         },
       },{
         diagnostics: 'пульпит',
@@ -63,6 +69,7 @@ export default function App() {
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
+          phone: '+3 (063) 569-29-28',
         },
       },{
         diagnostics: 'пульпит',
@@ -70,6 +77,7 @@ export default function App() {
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
+          phone: '+3 (063) 569-29-28',
         },
       },{
         diagnostics: 'пульпит',
@@ -77,6 +85,7 @@ export default function App() {
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
+          phone: '+3 (063) 569-29-28',
         },
       },
       ]
@@ -90,6 +99,7 @@ export default function App() {
         user: {
           avatar: 'https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg',
           name: 'Анжела Mатиева',
+          phone: '+3 (063) 569-29-28',
         },
       },{
         diagnostics: 'пульпит',
@@ -97,6 +107,7 @@ export default function App() {
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
+          phone: '+3 (063) 569-29-28',
         },
       }
       ]
@@ -105,7 +116,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        initialRouteName="Home"
+      >
         <Stack.Screen
           name="Home"
           component={({navigation}) => <GroupPage data={state} navigation={navigation}/>}
@@ -122,7 +135,7 @@ export default function App() {
         />
         <Stack.Screen
           name="Patient"
-          component={() => <Patient />}
+          component={Patient}
           options={{
             title: 'Patient',
             headerStyle: {
