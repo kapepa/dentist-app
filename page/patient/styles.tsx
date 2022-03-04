@@ -37,6 +37,17 @@ const StylesCSS = {
   },
   btnMarging: {
     marginLeft: 10,
+  },
+  label: {
+    fontSize: 19,
+    fontWeight: "bold",
+    marginBottom: 15,
+  },
+  appointment: {
+    backgroundColor: "#bcbdbf"
+  },
+  appointmentList: {
+
   }
 }
 

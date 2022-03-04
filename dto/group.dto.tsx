@@ -7,6 +7,9 @@ export class GroopDto {
 
 export class GroopItemDto {
   diagnostics: string,
+  price: number,
+  position: number,
   time: string,
+  end: string,
   user: UserDto,
 }
