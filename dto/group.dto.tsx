@@ -1,12 +1,15 @@
 import { UserDto } from './user.dto.tsx';
 
-export default class GroopDto {
+export class GroopDto {
   date: string,
   items: GroopItemDto[],
 }
 
-export default class GroopItemDto {
+export class GroopItemDto {
   diagnostics: string,
+  price: number,
+  position: number,
   time: string,
+  end: string,
   user: UserDto,
 }

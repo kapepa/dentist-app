@@ -4,12 +4,18 @@ import StylesCSS from './styles.tsx';
 
 interface IGroupItems extends GroopItemDto {
   active: boolean,
+  diagnostics: string,
+  price: number,
+  position: number,
+  time: string,
+  end: string,
+  user: UserDto,
 }
 
-export default function GroupItems<any>({diagnostics,time,user,active,navigation} ) {
+export default function GroupItems<IGroupItems>({diagnostics,time,end,user,active,price,position,navigation} ) {
 
   const onPressButton = () => {
-    navigation.navigate('Patient');
+    navigation.navigate('Patient',{user, meet: {diagnostics,time,end,price,position}});
   };
 
   return (
