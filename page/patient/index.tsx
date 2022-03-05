@@ -10,7 +10,6 @@ import StylesCSS from './styles.tsx';
 const styles = StyleSheet.create(StylesCSS);
 
 export default function Patient ({route}) {
-  console.log(route.params.meet)
   const [state, setState] = useState<UserDto>(route.params.user);
   const [appointment, setAppointment] = useState([{
     title: "Приемы",

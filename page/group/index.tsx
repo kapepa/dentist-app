@@ -27,7 +27,7 @@ export default function GroupPage<IGroupPage> ( { navigation, route } ) {
       <SectionList
         style={styles.group}
         sections={data}
-        keyExtractor={(item, index) => item.time + index}
+        keyExtractor={(item, index) => item.user.phone + index }
         renderItem={({ item }) => { return <View style={styles.groupInner}><GroupItems { ...{...item, navigation} } /></View> }}
         renderSectionHeader={({ section: { date } }) => (
            <Text style={styles.groupTitle}>{date}</Text>
