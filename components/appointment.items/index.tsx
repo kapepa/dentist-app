@@ -7,7 +7,7 @@ import StylesCSS from './styles.tsx';
 const styles = StyleSheet.create(StylesCSS);
 
 export default function AppointmentItems ({item}){
-  const {diagnostics, position, price, time, end} = item
+  const {desc, position, price, time, end} = item;
   return (
     <View style={styles.card}>
       <View style={styles.list}>
@@ -19,7 +19,7 @@ export default function AppointmentItems ({item}){
         <View style={styles.row}>
           <AntDesign name="filetext1" size={18} color="gray" />
           <Text style={styles.label}>Диагноз:</Text>
-          <Text style={styles.desc}>{diagnostics}</Text>
+          <Text style={styles.desc}>{desc}</Text>
         </View>
       </View>
       <View style={styles.infoFrame}>
@@ -32,4 +32,4 @@ export default function AppointmentItems ({item}){
       </View>
     </View>
   )
-}
+};

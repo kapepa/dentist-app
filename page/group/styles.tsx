@@ -16,6 +16,7 @@ const StylesCSS = {
     justifyContent: "flex-start",
   },
   plusBtn: {
+    position: "absolute",
     borderRadius: 50,
     width: 64,
     height: 64,
