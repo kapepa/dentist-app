@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, SectionList } from 'react-native';
 import { UserDto } from '../../dto/user.dto.tsx';
 import ButtonDef from '../../components/button.btn';
 import ButtonCall from '../../components/button.call';
@@ -10,16 +10,20 @@ import StylesCSS from './styles.tsx';
 const styles = StyleSheet.create(StylesCSS);
 
 export default function Patient ({route}) {
+  console.log(route.params.meet)
   const [state, setState] = useState<UserDto>(route.params.user);
-  const [appointment, setAppointment] = useState([route.params.meet]);
+  const [appointment, setAppointment] = useState([{
+    title: "Приемы",
+    data: route.params.meet,
+  }]);
 
   const pressBtn = () => {
     console.log("pressBtn")
   }
 
-    const pressCall = () => {
-      console.log("pressCall")
-    }
+  const pressCall = () => {
+    console.log("pressCall")
+  }
 
   return (
     <>
@@ -33,14 +37,14 @@ export default function Patient ({route}) {
       </View>
       <View style={styles.appointment}>
         <View style={styles.container}>
-          <Text style={styles.label}>Приемы</Text>
-          <View style={styles.appointmentList}>
-            <FlatList
-              data={appointment}
-              renderItem={AppointmentItems}
-              keyExtractor={(item, i) => item.position + i}
-            />
-          </View>
+          <SectionList
+            sections={appointment}
+            keyExtractor={(item, index) => item.position + index}
+            renderItem={(data) => <AppointmentItems {...data} />}
+            renderSectionHeader={({ section: { title } }) => (
+              <Text style={styles.label}>{title}</Text>
+            )}
+          />
         </View>
       </View>
     </>

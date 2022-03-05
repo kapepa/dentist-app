@@ -15,14 +15,15 @@ interface IState {
   activeProfile: GroopItemDto,
 }
 
-export default function GroupPage<IGroupPage> ( { data, navigation } ) {
+export default function GroupPage<IGroupPage> ( { navigation, route } ) {
+  const { data } = route.params;
   const activeDate = useRef<string>(null)  ;
   const [state, setState] = useState<IState>({
     activeProfile: {} as GroopDto,
   });
 
   return (
-    <View>
+    <View style={styles.container}>
       <SectionList
         style={styles.group}
         sections={data}

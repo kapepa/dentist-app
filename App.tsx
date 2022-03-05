@@ -16,33 +16,45 @@ export default function App() {
       date: '11 сентября',
       data: [
       {
-        diagnostics: 'пульпит, удаление зуба',
-        price: 1555,
-        position: 9,
-        time: '12:30',
-        end: '13:30',
+        diagnostics: [
+          {
+            desc: 'пульпит, удаление зуба',
+            price: 1555,
+            position: 9,
+            time: '12:30',
+            end: '13:30',
+          },
+        ],
         user: {
           avatar: 'https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg',
           name: 'Анжела Mатиева',
           phone: '+3 (063) 569-29-28',
         },
       },{
-        diagnostics: 'пульпит',
-        price: 1005,
-        position: 1,
-        time: '14:30',
-        end: '15:30',
+        diagnostics: [
+          {
+            desc: 'пульпит',
+            price: 1005,
+            position: 1,
+            time: '14:30',
+            end: '15:30',
+          },
+        ],
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
           phone: '+3 (063) 569-29-28',
         },
       },{
-        diagnostics: 'пульпит',
-        price: 1005,
-        position: 1,
-        time: '14:30',
-        end: '15:30',
+        diagnostics: [
+          {
+            desc: 'пульпит',
+            price: 1005,
+            position: 1,
+            time: '14:30',
+            end: '15:30',
+          }
+        ],
         user: {
           avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
           name: 'Василий Пупкин',
@@ -60,7 +72,8 @@ export default function App() {
       >
         <Stack.Screen
           name="Home"
-          component={({navigation}) => <GroupPage data={state} navigation={navigation}/>}
+          component={GroupPage}
+          initialParams={{ data: state }}
           options={{
             title: 'Home',
             headerStyle: {
