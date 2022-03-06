@@ -44,11 +44,9 @@ const StylesCSS = {
     marginBottom: 15,
   },
   appointment: {
-    backgroundColor: "#bcbdbf"
+    backgroundColor: "#fafafa",
+    flex: 1,
   },
-  appointmentList: {
-
-  }
 }
 
 export default StylesCSS;

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, FlatList, SectionList } from 
 import { UserDto } from '../../dto/user.dto.tsx';
 import ButtonDef from '../../components/button.btn';
 import ButtonCall from '../../components/button.call';
+import ButtonPlus from '../../components/button.plus';
 import AppointmentItems from '../../components/appointment.items';
 import StylesCSS from './styles.tsx';
 
@@ -46,6 +47,7 @@ export default function Patient ({route}) {
           />
         </View>
       </View>
+      <ButtonPlus size={64}/>
     </>
   );
 };

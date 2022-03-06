@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, SectionList} from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
 import GroupItems from '../../components/group.items/index';
+import ButtonPlus from '../../components/button.plus';
 import { GroopItemDto, GroopDto } from '../../dto/group.dto.tsx';
 import StylesCSS from './styles.tsx';
 
@@ -33,9 +33,7 @@ export default function GroupPage<IGroupPage> ( { navigation, route } ) {
            <Text style={styles.groupTitle}>{date}</Text>
         )}
       />
-      <TouchableOpacity style={styles.plusBtn} onPress={() => {console.log("btn +")}}>
-        <AntDesign name="pluscircle" size={63} color="#2a86ff" />
-      </TouchableOpacity>
+      <ButtonPlus size={64}/>
     </View>
   )
 }
