@@ -41,11 +41,11 @@ const StylesCSS = {
     paddingBottom: 12,
     paddingRight: 20,
     paddingLeft: 20,
-    backgroundColor: "#afc7b5",
+    backgroundColor: "rgba(132,210,105,0.21)",
     borderRadius: 50,
   },
   priceText: {
-    color: "#5ab159",
+    color: "#61bb42",
     fontWeight: "bold",
   }
 }
