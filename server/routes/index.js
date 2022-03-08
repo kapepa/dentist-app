@@ -1,9 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const app = express();
+const users = require('./users/users.controller.js');
+const diagnostics = require('./diagnostics/diagnostics.controller.js');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+app.use('/users', users);
+app.use('/diagnostics', diagnostics);
 
-module.exports = router;
+module.exports = app;
+
+
