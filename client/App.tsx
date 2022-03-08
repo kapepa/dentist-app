@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { GroopDto } from './dto/group.dto.tsx';
 import GroupPage from './page/group/index';
 import Patient from './page/patient/index';
+import Request from './helpers/request.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +65,10 @@ export default function App() {
       ]
     },
   ] as GroopDto[]);
+
+  useEffect(() => {
+    Request.userAll();
+  },[]);
 
   return (
     <NavigationContainer>
