@@ -12,10 +12,11 @@ interface IGroupItems extends GroopItemDto {
   user: UserDto,
 }
 
-export default function GroupItems<IGroupItems>({diagnostics,time,end,user,active,price,position,navigation} ) {
+export default function GroupItems<IGroupItems>(props) {
+  const {navigation, ...user} = props;
 
   const onPressButton = () => {
-    navigation.navigate('Patient',{user, meet: diagnostics});
+    navigation.navigate('Patient',{user, meet: user.diagnostics});
   };
 
   return (
@@ -23,9 +24,9 @@ export default function GroupItems<IGroupItems>({diagnostics,time,end,user,activ
       <Image source={{ uri: user.avatar }} style={styles.avatar}/>
       <View style={styles.textUser}>
         <Text style={styles.fullName}>{user.name}</Text>
-        <Text style={styles.grayText}>{diagnostics[0].desc}</Text>
+        <Text style={styles.grayText}>{user.diagnostics[0].desc}</Text>
       </View>
-      <Text style={[styles.groupDate, active ? styles.groupDateActive : ""]}>{time}</Text>
+      <Text style={[styles.groupDate, user.active ? styles.groupDateActive : ""]}>{user.time}</Text>
     </TouchableOpacity>
   )
 }

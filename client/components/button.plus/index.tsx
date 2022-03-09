@@ -12,8 +12,11 @@ interface IButtonPlus {
 const styles = StyleSheet.create(StylesCSS);
 
 export default function ButtonPlus<IButtonPlus>({ size = 24,classes, fc=()=>{}}){
+  const action = async () => {
+     console.log("asda")
+  }
   return (
-    <TouchableOpacity style={styles.plusBtn} onPress={() => {console.log("btn +")}}>
+    <TouchableOpacity style={styles.plusBtn} onPress={action}>
       <AntDesign name="pluscircle" size={size} color="#2a86ff" />
     </TouchableOpacity>
   )

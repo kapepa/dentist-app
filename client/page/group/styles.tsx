@@ -15,6 +15,9 @@ const StylesCSS = {
     flexDirection: "column",
     justifyContent: "flex-start",
   },
+  text: {
+    color: '#000',
+  }
 }
 
 export default StylesCSS;

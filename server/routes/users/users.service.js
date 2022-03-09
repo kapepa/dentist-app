@@ -7,7 +7,7 @@ const UsersService = {
   },
   findAll: async () => {
     const all = await UsersSchema.find({}).populate('diagnostics').exec();
-    return all;
+    return [{date: "11.03", data: all}];
   },
   update: async (symbol, value, data) => {
     const user = await UsersSchema.findOneAndUpdate({[symbol]: value}).then(doc => {

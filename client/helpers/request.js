@@ -1,14 +1,13 @@
-//import Axios from './axios.js';
-import axios from 'axios';
-
-const Axios = axios.create({
-  baseURL: 'http://localhost:5000',
-});
+import Axios from './axios.js';
 
 const Request = {
   async userAll () {
-    const all = await Axios.get('/app/users/all').then( res => res.data);
-    return all
+    const all = await Axios.get('/app/users/all')
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => err);
+    return all;
   },
 };
 

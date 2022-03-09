@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -11,64 +11,13 @@ import Request from './helpers/request.js';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [state, setState] = useState(
-  [
-    {
-      date: '11 сентября',
-      data: [
-      {
-        diagnostics: [
-          {
-            desc: 'пульпит, удаление зуба',
-            price: 1555,
-            position: 9,
-            time: '12:30',
-            end: '13:30',
-          },
-        ],
-        user: {
-          avatar: 'https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg',
-          name: 'Анжела Mатиева',
-          phone: '+3 (063) 569-29-28',
-        },
-      },{
-        diagnostics: [
-          {
-            desc: 'пульпит',
-            price: 1005,
-            position: 1,
-            time: '14:30',
-            end: '15:30',
-          },
-        ],
-        user: {
-          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
-          name: 'Василий Пупкин',
-          phone: '+3 (063) 569-29-28',
-        },
-      },{
-        diagnostics: [
-          {
-            desc: 'пульпит',
-            price: 1005,
-            position: 1,
-            time: '14:30',
-            end: '15:30',
-          }
-        ],
-        user: {
-          avatar: 'https://yt3.ggpht.com/ytc/AKedOLS0cma_0syynYcOKGIwPxQ7bJHWQjoBXsKVKa4G9w=s900-c-k-c0x00ffffff-no-rj',
-          name: 'Василий Пупкин',
-          phone: '+3 (063) 569-29-28',
-        },
-      }
-      ]
-    },
-  ] as GroopDto[]);
+  const [state, setState] = useState<any>([])
 
   useEffect(() => {
-    Request.userAll();
-  },[]);
+    if(state.length === 0) Request.userAll().then(list => setState(list))
+    console.log(state.length)
+  },[state]);
+
 
   return (
     <NavigationContainer>
@@ -105,7 +54,7 @@ export default function App() {
           }}
         />
       </Stack.Navigator>
-    </NavigationContainer>
+     </NavigationContainer>
   )
 }
 
