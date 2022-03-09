@@ -7,7 +7,7 @@ const DiagnosticsService = {
     const create = await DiagnosticsSchema.create({...other, users: _id});
     const user = await UsersService.update('_id',_id,{diagnostics: create})
     const one = await UsersService.findOne(_id);
-//    console.log(one)
+
     return one;
   }
 }

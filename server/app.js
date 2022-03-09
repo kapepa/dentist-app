@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+//const cors = require ('cors');
 
 const indexApp = require('./routes/index');
 
@@ -14,6 +15,7 @@ mongoose.connect('mongodb+srv://kapepa:Uva56945829@cluster0.vlmfu.mongodb.net/de
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+//app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
