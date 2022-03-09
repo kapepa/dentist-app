@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -10,16 +10,17 @@ import Request from './helpers/request.js';
 
 const Stack = createNativeStackNavigator();
 
+export const UserAllContext = createContext([]);
+
 export default function App() {
   const [state, setState] = useState<any>([])
 
   useEffect(() => {
     if(state.length === 0) Request.userAll().then(list => setState(list))
-    console.log(state.length)
-  },[state]);
-
+  },[]);
 
   return (
+  <UserAllContext.Provider value={state}>
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Home"
@@ -54,7 +55,8 @@ export default function App() {
           }}
         />
       </Stack.Navigator>
-     </NavigationContainer>
+    </NavigationContainer>
+  </UserAllContext.Provider>
   )
 }
 
