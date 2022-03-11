@@ -9,6 +9,7 @@ import Patient from './page/patient/index';
 import Request from './helpers/request.js';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
+import { receiveUsers } from './redux/user/action.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +17,7 @@ export default function App() {
   const [state, setState] = useState<any>([])
 
   useEffect(() => {
-    Request.userAll().then(list => setState(list))
+    store.dispatch(receiveUsers())
   },[]);
 
   return (
