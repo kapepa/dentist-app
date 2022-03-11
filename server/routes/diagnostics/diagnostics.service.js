@@ -9,6 +9,18 @@ const DiagnosticsService = {
     const one = await UsersService.findOne(_id);
 
     return one;
+  },
+  update: async (symbol, value, data) => {
+  console.log({[symbol]: value})
+    const diagnostic = await DiagnosticsSchema.findOneAndUpdate({[symbol]: value}).then(doc => {
+      doc = Object.assign(doc,data);
+      doc.save();
+    });
+    return diagnostic;
+  },
+  remove: async (id) => {
+    const remove = await DiagnosticsSchema.findByIdAndDelete(id);
+    return remove;
   }
 }
 

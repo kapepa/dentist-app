@@ -13,7 +13,7 @@ const UsersService = {
     const user = await UsersSchema.findOneAndUpdate({[symbol]: value}).then(doc => {
       const { diagnostics, ...other } = data;
       if(diagnostics) doc.diagnostics.push(diagnostics);
-      if(Object.keys(other).length) doc = {...doc, ...other};
+      if(Object.keys(other).length) doc = Object.assign(doc,other);
       doc.save();
     });
     return user;
@@ -22,6 +22,10 @@ const UsersService = {
     const create = await UsersSchema.create({...body});
     return create;
   },
+  remove: async (id) => {
+    const remove = await UsersSchema.findByIdAndDelete(id);
+    return remove;
+  }
 };
 
 module.exports = UsersService;

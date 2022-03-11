@@ -17,13 +17,12 @@ interface IState {
 }
 
 export default function GroupPage<IGroupPage> ( { navigation } ) {
-  const user = useSelector(state => state.user.value)
+  const list = useSelector(state => state.users.list);
   const [state, setState] = useState([]);
 
-  console.log(user)
-
   useEffect(() => {
-  },[])
+    setState(list)
+  },[list])
 
   return (
     <>

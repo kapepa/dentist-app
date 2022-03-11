@@ -18,4 +18,15 @@ router.post('/create', async function(req, res, next) {
   res.status(200).json(create);
 });
 
+router.put('/update', async function(req, res, next) {
+  const { _id, field, value } = req.body;
+  const update = await UsersService.update("_id", _id, {[field]: value});
+  res.status(200).json(update);
+});
+
+router.delete('/delete/:id', async function(req, res, next) {
+  const remove = await UsersService.remove(req.params.id);
+  res.status(200).json(remove);
+});
+
 module.exports = router;
