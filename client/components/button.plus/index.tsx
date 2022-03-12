@@ -11,9 +11,9 @@ interface IButtonPlus {
 
 const styles = StyleSheet.create(StylesCSS);
 
-export default function ButtonPlus<IButtonPlus>({ size = 24,classes, fc=()=>{}}){
+export default function ButtonPlus<IButtonPlus>({ size = 24,classes, navigation, fc=()=>{}}){
   const action = async () => {
-     console.log("asda")
+    navigation.push('Appointment');
   }
   return (
     <TouchableOpacity style={styles.plusBtn} onPress={action}>

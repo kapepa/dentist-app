@@ -16,7 +16,7 @@ export default function GroupItems<IGroupItems>(props) {
   const {navigation, ...user} = props;
 
   const onPressButton = () => {
-    navigation.navigate('Patient',{user, meet: user.diagnostics});
+    navigation.navigate('Patient',{user, meet: user.diagnostics, navigation});
   };
 
   return (

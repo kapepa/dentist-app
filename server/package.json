@@ -9,6 +9,7 @@
     "dev": "concurrently \"npm run nodemon\" \"npm run client\""
   },
   "dependencies": {
+    "body-parser": "^1.19.2",
     "concurrently": "^7.0.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

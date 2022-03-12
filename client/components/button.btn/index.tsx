@@ -10,9 +10,15 @@ interface IButtonDef {
 
 const styles = StyleSheet.create(StylesCSS);
 
-export default function ButtonDef<IButtonDef>({name, classes, fc = () => {}}) {
+export default function ButtonDef<IButtonDef>({name, classes, color, fc = () => {}}) {
+  const classArr = [];
+  classes ? classArr.push([styles.button_def, classes]) : classArr.push([styles.button_def]);
+  color === 'green' ? classArr.push(styles.green) : classArr;
+
   return (
-    <TouchableOpacity onPress={fc} style={ classes ? [styles.button_def, classes] : styles.button_def }>
+    <TouchableOpacity
+      onPress={fc}
+      style={classArr}>
       <Text style={styles.btnName}>{name}</Text>
     </TouchableOpacity>
   )
