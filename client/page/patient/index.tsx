@@ -10,7 +10,7 @@ import StylesCSS from './styles.tsx';
 
 const styles = StyleSheet.create(StylesCSS);
 
-export default function Patient ({route}) {
+export default function Patient ({route, navigation}) {
   const [state, setState] = useState<UserDto>(route.params.user);
   const [appointment, setAppointment] = useState([{
     title: "Приемы",
@@ -47,7 +47,7 @@ export default function Patient ({route}) {
           />
         </View>
       </View>
-      <ButtonPlus size={64}/>
+      <ButtonPlus size={64} navigation={navigation}/>
     </>
   );
 };

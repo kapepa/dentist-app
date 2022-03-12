@@ -11,6 +11,9 @@ const StylesCSS = {
     alignItems: 'center',
     flexGrow: 1,
   },
+  green: {
+    backgroundColor: '#5ab159',
+  },
   btnName: {
     color: "#fff",
     fontSize: 18,

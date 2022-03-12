@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { GroopDto } from './dto/group.dto.tsx';
 import GroupPage from './page/group/index';
 import Patient from './page/patient/index';
+import Appointment from './page/appointment/index';
 import Request from './helpers/request.js';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
@@ -46,6 +47,20 @@ export default function App() {
           component={Patient}
           options={{
             title: 'Patient',
+            headerStyle: {
+              backgroundColor: '#2A86FF',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Appointment"
+          component={Appointment}
+          options={{
+            title: 'Appointment',
             headerStyle: {
               backgroundColor: '#2A86FF',
             },

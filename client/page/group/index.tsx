@@ -37,7 +37,7 @@ export default function GroupPage<IGroupPage> ( { navigation } ) {
           }}
         />
       </SafeAreaView>
-      <ButtonPlus size={64}/>
+      <ButtonPlus size={64} navigation={navigation}/>
     </>
   )
 }

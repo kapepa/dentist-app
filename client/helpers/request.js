@@ -9,6 +9,21 @@ const Request = {
     .catch(err => err);
     return all;
   },
+  async create (form) {
+    const user = await Axios({
+      method: 'post',
+      url: '/app/users/create',
+      headers:{
+        'content-type':'multipart/form-data'
+      },
+      data: form,
+    })
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => err);
+    return user;
+  }
 };
 
 export default Request;
