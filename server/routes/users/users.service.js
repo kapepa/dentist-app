@@ -1,4 +1,5 @@
 const UsersSchema = require('../../schema/users.schema.js');
+const FileService = require('../file/file.service.js');
 
 const UsersService = {
   findOne: async (symbol, value) => {
@@ -19,8 +20,16 @@ const UsersService = {
     return user;
   },
   create: async (body) => {
-    const create = await UsersSchema.create({...body});
-    return create;
+    const obj = body.reduce((accum, arr) => {
+      accum[arr[0]] = arr[1];
+      return accum
+    },{});
+
+    const avatar = await FileService.saveFile(obj.avatar);
+
+
+//    const create = await UsersSchema.create({...body});
+//    return create;
   },
   remove: async (id) => {
     const remove = await UsersSchema.findByIdAndDelete(id);

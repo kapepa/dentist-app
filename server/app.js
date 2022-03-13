@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
+const cors = require('cors');
+const multer = require('multer');
+const upload = multer();
 
 const indexApp = require('./routes/index');
 
@@ -15,15 +18,13 @@ mongoose.connect('mongodb+srv://kapepa:Uva56945829@cluster0.vlmfu.mongodb.net/de
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-//app.use(cors());
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use( bodyParser.json() )
 app.use(express.urlencoded({ extended: true }));
-//app.use(cookieParser());
-//app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, '/public/images')));
 
 app.use('/app', indexApp);
 

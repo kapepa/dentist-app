@@ -1,23 +1,52 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, SafeAreaView, } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, TextInput, SafeAreaView } from 'react-native';
 import ButtonDef from '../../components/button.btn';
 import Request from '../../helpers/request.js';
 import StylesCSS from './styles.tsx';
+import * as ImagePicker from 'expo-image-picker';
+import * as DocumentPicker from 'expo-document-picker';
+
+import axios from 'axios';
 
 const styles = StyleSheet.create(StylesCSS);
 
 export default function Appointment<any>() {
-  const [value, setValue] = React.useState({
+  const [value, setValue] = useState({
     name: '',
     phone: '',
+    avatar: {},
   });
+
+  const pickDocument = async () => {
+
+  }
 
   const sendAppointment = () => {
     const formData = new FormData();
     formData.append('name', value.name);
     formData.append('phone', value.phone);
+    formData.append('avatar', value.avatar);
     Request.create(formData).then(res => console.log('send'));
   }
+
+  const pickImage = async () => {
+    let result = await DocumentPicker.getDocumentAsync({ type: "*/*", copyToCacheDirectory: true }).then(response => {
+      if (response.type == 'success') {
+        let { name, size, uri } = response;
+        let nameParts = name.split('.');
+        let fileType = nameParts[nameParts.length - 1];
+        let fileToUpload = {
+          name: name,
+          size: size,
+          uri: uri,
+          type: "application/" + fileType
+        };
+        setValue({...value, avatar: fileToUpload});
+        }
+      });
+  };
+
+  console.log(value)
 
   return (
     <View style={styles.container}>
@@ -40,6 +69,10 @@ export default function Appointment<any>() {
             placeholder="Phone"
           />
         </SafeAreaView>
+        <View style={styles.imageFrame}>
+          <ButtonDef classes={styles.avatarBtn} name="Select avatar" fc={pickImage} />
+           {value.avatar.uri ? (<Image style={styles.imageAvatar} source={{ uri: value.avatar.uri }} style={{ width: 200, height: 200 }} />) : null}
+        </View>
         <ButtonDef name='+Add client' color='green' fc={sendAppointment}/>
       </View>
     </View>
