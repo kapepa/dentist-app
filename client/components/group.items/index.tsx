@@ -24,7 +24,7 @@ export default function GroupItems<IGroupItems>(props) {
       <Image source={{ uri: user.avatar }} style={styles.avatar}/>
       <View style={styles.textUser}>
         <Text style={styles.fullName}>{user.name}</Text>
-        <Text style={styles.grayText}>{user.diagnostics[0].desc}</Text>
+        <Text style={styles.grayText}>{user.diagnostics[0] ? user.diagnostics[0].desc : null}</Text>
       </View>
       <Text style={[styles.groupDate, user.active ? styles.groupDateActive : ""]}>{user.time}</Text>
     </TouchableOpacity>

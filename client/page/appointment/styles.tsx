@@ -22,7 +22,14 @@ const StylesCSS = {
   },
   areaLast: {
     paddingBottom: 20,
-  }
+  },
+  imageFrame: {
+    alignItems: 'center',
+    paddingBottom: 20
+  },
+  avatarBtn: {
+    marginBottom: 20,
+  },
 };
 
 export default StylesCSS;
