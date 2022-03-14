@@ -5,16 +5,18 @@ const path = require('path');
 const FileService = {
   saveFile: async (file) => {
     const name = uuidv4();
-    const prefix = file.name.split('.').pop();
+    const prefix = file.uri.split('.').pop();
     const newName = `${name}.${prefix}`;
-    const pathTo = path.resolve(__filename, '..', '..', 'public', 'images');
+    const pathTo = path.resolve(__filename, '..', '..', '..', 'public', 'images');
+    const base64 = Buffer.from(file.base64)
 
-    fs.writeFile(pathTo, file, (err) => {
-        console.log(err)
-    })
+//
+//    console.log(`${pathTo}\\${newName}`)
+//
+//    fs.writeFileSync(`${pathTo}\\${newName}`, base64)
 
 
-    console.log()
+    console.log(file)
     return
   }
 };
