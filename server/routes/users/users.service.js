@@ -20,16 +20,9 @@ const UsersService = {
     return user;
   },
   create: async (body) => {
-    const obj = body.reduce((accum, arr) => {
-      accum[arr[0]] = arr[1];
-      return accum
-    },{});
-
-    const avatar = await FileService.saveFile(obj.avatar);
-
-
-//    const create = await UsersSchema.create({...body});
-//    return create;
+    const avatar = Object.keys(body.avatar).length ? await FileService.saveFile(body.avatar) : {};
+    const create = await UsersSchema.create({...body, avatar});
+    return create;
   },
   remove: async (id) => {
     const remove = await UsersSchema.findByIdAndDelete(id);
