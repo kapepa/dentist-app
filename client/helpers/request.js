@@ -10,10 +10,7 @@ const Request = {
     return all;
   },
   async create (form) {
-    const user = await Axios.post('/app/users/create',form, {
-      'Accept': 'application/json',
-      'Content-Type': 'multipart/form-data',
-    })
+    const user = await Axios.post('/app/users/create',form)
     .then(res => {
       return res.data;
     })

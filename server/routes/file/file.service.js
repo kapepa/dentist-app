@@ -8,16 +8,11 @@ const FileService = {
     const prefix = file.uri.split('.').pop();
     const newName = `${name}.${prefix}`;
     const pathTo = path.resolve(__filename, '..', '..', '..', 'public', 'images');
-    const base64 = Buffer.from(file.base64)
+    const base64 = Buffer.from(file.base64, 'base64')
 
-//
-//    console.log(`${pathTo}\\${newName}`)
-//
-//    fs.writeFileSync(`${pathTo}\\${newName}`, base64)
+    fs.writeFileSync(`${pathTo}\\${newName}`, base64)
 
-
-    console.log(file)
-    return
+    return newName;
   }
 };
 

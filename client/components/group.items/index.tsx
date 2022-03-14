@@ -12,16 +12,16 @@ interface IGroupItems extends GroopItemDto {
   user: UserDto,
 }
 
-export default function GroupItems<IGroupItems>(props) {
+export default function GroupItems(props) {
   const {navigation, ...user} = props;
 
   const onPressButton = () => {
     navigation.navigate('Patient',{user, meet: user.diagnostics, navigation});
   };
-
+  console.log()
   return (
     <TouchableOpacity onPress={onPressButton} style={styles.groupItem}>
-      <Image source={{ uri: user.avatar }} style={styles.avatar}/>
+      <Image source={{ uri: /http/.test(user.avatar) ? user.avatar : `http://192.168.0.103:5000/${user.avatar}` }} style={styles.avatar}/>
       <View style={styles.textUser}>
         <Text style={styles.fullName}>{user.name}</Text>
         <Text style={styles.grayText}>{user.diagnostics[0] ? user.diagnostics[0].desc : null}</Text>
