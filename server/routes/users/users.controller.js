@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const upload = multer()
 const UsersService = require('./users.service.js');
 
 router.get('/all', async function(req, res, next) {
@@ -15,7 +15,7 @@ router.get('/one/:id?', async function(req, res, next) {
   res.status(200).json(user);
 });
 
-router.post('/create', upload.single('avatar'), async function(req, res, next) {
+router.post('/create', upload.none(), async function(req, res, next) {
     const create = await UsersService.create(req.body._parts);
 //  res.status(200).json(create);
     res.status(200).json("true");

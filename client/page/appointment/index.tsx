@@ -6,8 +6,6 @@ import StylesCSS from './styles.tsx';
 import * as ImagePicker from 'expo-image-picker';
 import * as DocumentPicker from 'expo-document-picker';
 
-import axios from 'axios';
-
 const styles = StyleSheet.create(StylesCSS);
 
 export default function Appointment<any>() {
@@ -27,26 +25,42 @@ export default function Appointment<any>() {
     formData.append('phone', value.phone);
     formData.append('avatar', value.avatar);
     Request.create(formData).then(res => console.log('send'));
+//     console.log( new File(value.avatar.uri))
+
+//     var reader = new FileReader();
+//     reader.readAsDataURL(value.avatar.base64);
+//     reader.onloadend = function() {
+//       var base64data = reader.result;
+//       console.log(base64data);
+//     }
   }
 
   const pickImage = async () => {
-    let result = await DocumentPicker.getDocumentAsync({ type: "*/*", copyToCacheDirectory: true }).then(response => {
-      if (response.type == 'success') {
-        let { name, size, uri } = response;
-        let nameParts = name.split('.');
-        let fileType = nameParts[nameParts.length - 1];
-        let fileToUpload = {
-          name: name,
-          size: size,
-          uri: uri,
-          type: "application/" + fileType
-        };
-        setValue({...value, avatar: fileToUpload});
-        }
-      });
-  };
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 3],
+          quality: 1,
+          base64: true,
+        })
+        setValue({...value, avatar: result});
 
-  console.log(value)
+        console.log(result)
+//     let result = await DocumentPicker.getDocumentAsync({ type: "*/*", copyToCacheDirectory: true }).then(response => {
+//       if (response.type == 'success') {
+//         let { name, size, uri } = response;
+//         let nameParts = name.split('.');
+//         let fileType = nameParts[nameParts.length - 1];
+//         let fileToUpload = {
+//           name: name,
+//           size: size,
+//           uri: uri,
+//           type: "application/" + fileType
+//         };
+//         setValue({...value, avatar: fileToUpload});
+//         }
+//       });
+  };
 
   return (
     <View style={styles.container}>
