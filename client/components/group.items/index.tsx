@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Pressable } from 'react-native';
 import StylesCSS from './styles.tsx';
 
 interface IGroupItems extends GroopItemDto {
@@ -16,10 +16,15 @@ export default function GroupItems(props) {
   const {navigation, ...user} = props;
 
   const onPressButton = () => {
-    navigation.navigate('Patient',{user, meet: user.diagnostics, navigation});
+    navigation.navigate('Patient',{user, meet: user.diagnostics});
   };
-  console.log()
+
+  const onPressFunction = () => {
+    console.log("asdas")
+  }
+
   return (
+  <Pressable onPress={onPressFunction}>
     <TouchableOpacity onPress={onPressButton} style={styles.groupItem}>
       <Image source={{ uri: /http/.test(user.avatar) ? user.avatar : `http://192.168.0.103:5000/${user.avatar}` }} style={styles.avatar}/>
       <View style={styles.textUser}>
@@ -28,6 +33,7 @@ export default function GroupItems(props) {
       </View>
       <Text style={[styles.groupDate, user.active ? styles.groupDateActive : ""]}>{user.time}</Text>
     </TouchableOpacity>
+  </Pressable>
   )
 }
 

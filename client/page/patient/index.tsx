@@ -7,7 +7,6 @@ import ButtonPlus from '../../components/button.plus';
 import AppointmentItems from '../../components/appointment.items';
 import StylesCSS from './styles.tsx';
 
-
 const styles = StyleSheet.create(StylesCSS);
 
 export default function Patient ({route, navigation}) {
@@ -18,7 +17,7 @@ export default function Patient ({route, navigation}) {
   }]);
 
   const pressBtn = () => {
-    console.log("pressBtn")
+    navigation.navigate('Diagnosis',{user: state})
   }
 
   const pressCall = () => {
@@ -31,7 +30,7 @@ export default function Patient ({route, navigation}) {
         <Text style={styles.name}>{state.name}</Text>
         <Text style={styles.phone}>{state.phone}</Text>
         <View style={styles.btnFrame} >
-          <ButtonDef name="Формула зубов" fc={pressBtn} />
+          <ButtonDef name="Добавить диагноз" fc={pressBtn} />
           <ButtonCall size={24} classes={styles.btnMarging} fc={pressCall} />
         </View>
       </View>
