@@ -20,7 +20,7 @@ export default function Appointment<any>({ navigation }) {
   }
 
   const sendAppointment = () => {
-    Request.create(value).then(res => navigation.navigate('Home'));
+     Request.create(value).then(res => navigation.navigate('Home'));
   }
 
   const pickImage = async () => {

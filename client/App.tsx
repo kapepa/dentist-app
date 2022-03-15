@@ -7,6 +7,7 @@ import { GroopDto } from './dto/group.dto.tsx';
 import GroupPage from './page/group/index';
 import Patient from './page/patient/index';
 import Appointment from './page/appointment/index';
+import Diagnosis from './page/diagnosis/index';
 import Request from './helpers/request.js';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
@@ -61,6 +62,20 @@ export default function App() {
           component={Appointment}
           options={{
             title: 'Appointment',
+            headerStyle: {
+              backgroundColor: '#2A86FF',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Diagnosis"
+          component={Diagnosis}
+          options={{
+            title: 'Diagnosis',
             headerStyle: {
               backgroundColor: '#2A86FF',
             },
