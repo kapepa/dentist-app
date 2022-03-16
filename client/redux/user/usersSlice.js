@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { receiveUsers } from './action.js';
+import { receiveUsers, updateUsers } from './action.js';
 
 export const usersSlice = createSlice({
   name: 'users',
@@ -7,7 +7,6 @@ export const usersSlice = createSlice({
     list: [],
     loader: false,
   },
-  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(receiveUsers.pending, (state, action) => {
@@ -17,9 +16,16 @@ export const usersSlice = createSlice({
         state.list = action.payload;
         state.loader = false;
       })
+      .addCase(updateUsers.pending, (state, action) => {
+        state.loader = true;
+      })
+      .addCase(updateUsers.fulfilled, (state, action) => {
+        state.list = action.payload;
+        state.loader = false;
+      })
     }
 });
 
-export const { } = usersSlice.actions;
+export const {  } = usersSlice.actions;
 
 export default usersSlice.reducer;
