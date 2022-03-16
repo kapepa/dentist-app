@@ -3,6 +3,7 @@ const StylesCSS = {
     padding: 20,
     backgroundColor: "#fff",
     borderRadius: 10,
+    position: "relative",
   },
   row: {
     flexDirection: "row",
@@ -47,6 +48,11 @@ const StylesCSS = {
   priceText: {
     color: "#61bb42",
     fontWeight: "bold",
+  },
+  del: {
+    position: "absolute",
+    top: 5,
+    right: 5,
   }
 }
 

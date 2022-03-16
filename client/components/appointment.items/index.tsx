@@ -1,13 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, TextInput, SafeAreaView } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { StyleSheet, Text, View, FlatList, TextInput, SafeAreaView, TouchableOpacity } from 'react-native';
+import { AntDesign, FontAwesome5 } from '@expo/vector-icons';
+import { delDiagnostics } from '../../redux/user/action.js';
+import { useDispatch } from 'react-redux';
 import StylesCSS from './styles.tsx';
 
 const styles = StyleSheet.create(StylesCSS);
 
-export default function AppointmentItems ({item}){
-  const {desc, position, price, time, end} = item;
+export default function AppointmentItems ({item, navigation, user}){
+  const dispatch = useDispatch();
+  const {_id, desc, position, price, time, end} = item;
   const start = new Date(time);
   const finish = new Date(end);
   const startHours = (start.getHours() < 10) ? `0${start.getHours()}` : start.getHours();
@@ -15,8 +17,14 @@ export default function AppointmentItems ({item}){
   const finishHours = (finish.getHours() < 10) ? `0${finish.getHours()}` : finish.getHours();
   const finishMinutes = (finish.getMinutes() < 10) ? `0${finish.getMinutes()}` : finish.getMinutes();
 
+  const onPressDel = () => {dispatch(delDiagnostics(_id))}
+
+  const onPressEdit = () => {
+    navigation.navigate('Diagnosis',{user, edit: item})
+  }
+
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={onPressEdit}>
       <View style={styles.list}>
         <View style={styles.row}>
           <FontAwesome5 name="tooth" size={18} color="gray" />
@@ -37,6 +45,7 @@ export default function AppointmentItems ({item}){
           <Text style={styles.priceText}>{price} P</Text>
         </View>
       </View>
-    </View>
+      <AntDesign onPress={onPressDel} style={styles.del} name="close" size={24} color="black" />
+    </TouchableOpacity>
   )
 };
