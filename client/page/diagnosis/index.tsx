@@ -2,28 +2,35 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonDef from '../../components/button.btn';
-import { updateUsers } from '../../redux/user/action.js';
+import { updateUsers, updateDiagnostics } from '../../redux/user/action.js';
+import { findUser } from '../../helpers/user.js';
 import StylesCSS from './styles.tsx';
 
 const styles = StyleSheet.create(StylesCSS);
 
 export default function Diagnosis ({route, navigation}) {
+  const edit = route.params?.edit;
   const list = useSelector(state => state.users.list);
   const dispatch = useDispatch();
   const [user, setUser] = useState<UserDto>(route.params.user);
   const [diagnos, setDiagnos] = useState({
-    position: null,
-    price: null,
-    desc: '',
-    time: null,
-    end: null,
+    position: edit ? edit.position : null,
+    price: edit ? edit.price : null,
+    desc: edit ? edit.desc : '',
+    time: edit ? edit.time : null,
+    end: edit ? edit.end : null,
   })
 
   const DiagnosisAdd = async () => {
-    let toUser
-    await dispatch(updateUsers({_id: user._id, diagnostics: diagnos}));
-    for(let day of list) toUser = day.data.find( el => el._id === user._id);
-    navigation.navigate('Patient',{user: toUser});
+    if(edit) {
+      dispatch(updateDiagnostics({...edit, ...diagnos})).then((data) => {
+        navigation.navigate('Patient',{user: findUser(list, route.params.user._id)});
+      });
+    } else {
+      dispatch(updateUsers({_id: user._id, diagnostics: diagnos})).then((data) => {
+        navigation.navigate('Patient',{user: findUser(list, route.params.user._id)});
+      });
+    }
   }
 
   return (

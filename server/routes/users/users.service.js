@@ -11,12 +11,11 @@ const UsersService = {
     return [{date: "11.03", data: all}];
   },
   update: async (symbol, value, data) => {
-    const user = await UsersSchema.findOneAndUpdate({[symbol]: value}).then(doc => {
-      const { diagnostics, ...other } = data;
-      if(diagnostics) doc.diagnostics.push(diagnostics);
-      if(Object.keys(other).length) doc = Object.assign(doc,other);
-      doc.save();
-    });
+    const { diagnostics, ...other } = data;
+    const user = await UsersSchema.findOneAndUpdate(
+      {[symbol]: value},
+      {$set: {...other}, $push: {'diagnostics': diagnostics}}
+    );
     return user;
   },
   create: async (body) => {

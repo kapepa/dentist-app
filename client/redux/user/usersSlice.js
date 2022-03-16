@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { receiveUsers, updateUsers } from './action.js';
+import { receiveUsers, updateUsers, delDiagnostics } from './action.js';
 
 export const usersSlice = createSlice({
   name: 'users',
@@ -7,23 +7,29 @@ export const usersSlice = createSlice({
     list: [],
     loader: false,
   },
-  extraReducers: builder => {
-    builder
-      .addCase(receiveUsers.pending, (state, action) => {
-        state.loader = true;
-      })
-      .addCase(receiveUsers.fulfilled, (state, action) => {
-        state.list = action.payload;
-        state.loader = false;
-      })
-      .addCase(updateUsers.pending, (state, action) => {
-        state.loader = true;
-      })
-      .addCase(updateUsers.fulfilled, (state, action) => {
-        state.list = action.payload;
-        state.loader = false;
-      })
+  extraReducers: {
+    [receiveUsers.pending]: (state, action) => {
+      state.loader = true;
+    },
+    [receiveUsers.fulfilled]: (state, action) => {
+      state.list = action.payload;
+      state.loader = false;
+    },
+    [updateUsers.pending]: (state, action) => {
+      state.loader = true;
+    },
+    [updateUsers.fulfilled]: (state, action) => {
+      state.list = action.payload;
+      state.loader = false;
+    },
+    [delDiagnostics.pending]: (state, action) => {
+      state.loader = true;
+    },
+    [delDiagnostics.fulfilled]: (state, action) => {
+      state.list = action.payload;
+      state.loader = false;
     }
+  }
 });
 
 export const {  } = usersSlice.actions;
