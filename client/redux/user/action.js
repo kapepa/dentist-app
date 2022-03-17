@@ -6,6 +6,11 @@ export const receiveUsers = createAsyncThunk('users/fetchUsers', async () => {
   return receive;
 });
 
+export const createUsers = createAsyncThunk('users/createUsers', async (obj) => {
+  const create = await Axios.post('/app/users/create',obj).then(res => res.data);
+  return create;
+});
+
 export const updateUsers = createAsyncThunk('users/updateUsers', async (obj) => {
   const update = await Axios.put('/app/diagnostics/append',obj).then(res => res.data);
   return update;

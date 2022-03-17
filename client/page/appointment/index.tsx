@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, SafeAreaView } from 'react-native';
+import { useDispatch } from 'react-redux';
 import ButtonDef from '../../components/button.btn';
-import Request from '../../helpers/request.js';
 import StylesCSS from './styles.tsx';
+import { createUsers } from '../../redux/user/action.js'
 import * as ImagePicker from 'expo-image-picker';
 import * as DocumentPicker from 'expo-document-picker';
 
 const styles = StyleSheet.create(StylesCSS);
 
 export default function Appointment<any>({ navigation }) {
+  const dispatch = useDispatch();
   const [value, setValue] = useState({
     name: '',
     phone: '',
     avatar: {},
   });
 
-  const pickDocument = async () => {
-
-  }
+  const pickDocument = async () => {}
 
   const sendAppointment = () => {
-     Request.create(value).then(res => navigation.navigate('Home'));
+    dispatch(createUsers(value)).then(res => navigation.navigate('Home'))
   }
 
   const pickImage = async () => {
