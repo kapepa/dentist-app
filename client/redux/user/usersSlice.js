@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { receiveUsers, updateUsers, delDiagnostics } from './action.js';
+import { receiveUsers, updateUsers, delDiagnostics, updateDiagnostics, createUsers } from './action.js';
 
 export const usersSlice = createSlice({
   name: 'users',
@@ -8,6 +8,13 @@ export const usersSlice = createSlice({
     loader: false,
   },
   extraReducers: {
+    [createUsers.pending]: (state, action) => {
+      state.loader = true;
+    },
+    [createUsers.fulfilled]: (state, action) => {
+      state.list = action.payload;
+      state.loader = false;
+    },
     [receiveUsers.pending]: (state, action) => {
       state.loader = true;
     },
@@ -26,6 +33,13 @@ export const usersSlice = createSlice({
       state.loader = true;
     },
     [delDiagnostics.fulfilled]: (state, action) => {
+      state.list = action.payload;
+      state.loader = false;
+    },
+    [updateDiagnostics.pending]: (state, action) => {
+      state.loader = true;
+    },
+    [updateDiagnostics.fulfilled]: (state, action) => {
       state.list = action.payload;
       state.loader = false;
     }

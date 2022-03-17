@@ -24,7 +24,7 @@ export default function Patient ({route, navigation}) {
   }
 
   const pressCall = () => {
-    console.log("pressCall")
+    console.log('pressCall')
   }
 
   useEffect(() => {
